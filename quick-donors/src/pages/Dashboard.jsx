@@ -1,11 +1,9 @@
-
 const Dashboard = () => {
     return (
     <>
 
 <div class="flex flex-col justify-center items-center min-h-screen p-5">
   <div class="flex flex-row justify-center h-full w-full">
-    
     <div class="flex flex-col justify-center items-center mx-5 rounded-lg border bg-[#EEEEEE] px-5 pt-4 shadow-lg">
     <div class= "flex flex-row bg-[#EEEEEE] px-5">
       <div class="bg-[#EEEEEE] px-5">
