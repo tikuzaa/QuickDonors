@@ -1,12 +1,34 @@
 import Works from "../components/Works"
 import Testimonials from "../components/Testimonials"
 import Navbar from "../components/Navigation";
+// import './style.scss'
+
 
 const Home = () => {
   return (
     <>
+    
+    {/* <div class="gradient-bg">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="gradients-container">
+      <div class="g1"></div>
+      <div class="g2"></div>
+      <div class="g3"></div>
+      <div class="g4"></div>
+      <div class="g5"></div>
+      <div class="interactive"></div>
+    </div>
+  </div> */}
       <div className="bg-[#3D0301]">
-        <Navbar></Navbar>
+      <Navbar></Navbar>
         <div className="relative isolate px-6 pt-5 lg:px-8 min-h-screen">
           <div
             aria-hidden="true"
@@ -68,6 +90,7 @@ const Home = () => {
 
       <Works />
       <Testimonials />
+      {/* <script type="module" src="../animation.ts"></script> */}
     </>
   );
 };
