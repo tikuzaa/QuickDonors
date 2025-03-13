@@ -43,7 +43,7 @@ const Home = () => {
 
           </div>
     <div>
-    <img className="" src="/bloody_hands.png" alt="" />
+    <img className="max-w-200" src="/hand_hold.png" alt="" />
 
     </div>
   </div>   
