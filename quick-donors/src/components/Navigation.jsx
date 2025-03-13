@@ -13,10 +13,10 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
-    <header className="sticky top-0 z-50 backdrop-blur-sm rounded--md">
+    <header className="sticky top-0 z-50 backdrop-blur-sm rounded-md">
           <nav
             aria-label="Global"
-            className="flex items-center justify-between py-4 lg:px-8 "
+            className="flex items-center justify-between py-4 lg:px-8 z-50"
           >
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
@@ -32,7 +32,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                className="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
               >
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon aria-hidden="true" className="h-6 w-6" />
