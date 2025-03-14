@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Works from "../components/Works"
-import Testimonials from "../components/Testimonials"
+import React, { useState, useEffect } from "react";
+import Works from "../components/Works";
+import Testimonials from "../components/Testimonials";
 import Navbar from "../components/Navigation";
+
 import Footer from "../components/Footer";
 import { Button } from "@material-tailwind/react";
 import './style.scss'
@@ -9,25 +10,20 @@ import './style.scss'
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    // Change this value to the point where you want the navbar to change
-    if (scrollY > 100) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <>
-    <Navbar isScrolled={isScrolled}></Navbar>
+      <Navbar isScrolled={isScrolled}></Navbar>
       <div className="relative -translate-y-23">
         <div className="relative">     
         <div class="text-container flex flex-col 2xl:flex-row justify-between items-center w-full">
@@ -49,12 +45,22 @@ const Home = () => {
 
     </div>
   </div>   
+
           <div className="gradient-bg overflow-hidden">
             <svg xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <filter id="goo">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="10"
+                    result="blur"
+                  />
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                    result="goo"
+                  />
                   <feBlend in="SourceGraphic" in2="goo" />
                 </filter>
               </defs>

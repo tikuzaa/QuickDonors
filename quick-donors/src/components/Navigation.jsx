@@ -1,18 +1,18 @@
-("use client");
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { HiMiniBars3BottomLeft,HiMiniXMark } from "react-icons/hi2";
+import { HiMiniBars3BottomLeft, HiMiniXMark } from "react-icons/hi2";
 
 const navigation = [
   { name: "Contact Us", href: "#" },
   { name: "About", href: "#" },
 ];
 
-const Navbar = ({isScrolled}) => {
+const Navbar = ({ isScrolled }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header
       className={`sticky ${isScrolled ? "top-3 rounded-[50px] m-4" : "top-0 rounded-md"} z-50 transition-all duration-300 ${isScrolled ? "bg-[#B22222]/90 backdrop-blur-[8px] shadow-lg" : "backdrop-blur-sm"}`}
@@ -113,7 +113,6 @@ const Navbar = ({isScrolled}) => {
       </Dialog>
     </header>
   );
-  
 };
 
 export default Navbar;
