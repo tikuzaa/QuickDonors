@@ -1,152 +1,138 @@
+import { useState } from "react";
 import Navbar from "../components/Navigation";
+import { MapPin, Search, Droplets, Clock, User } from "lucide-react";
+import Map from "@/components/Map";
+import axios from "axios";
+
+const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+
 const Dashboard = () => {
-    return (
-    <>
-<Navbar></Navbar>
-<div className="flex flex-col-3 justify-center items-center min-h-screen ">
-  <div className="flex flex-row justify-center h-full w-full ">
-    
-    <div className="flex flex-col justify-center items-center mx-5 rounded-lg border bg-[#EEEEEE] px-5 pt-4 shadow-lg">
-    <div className= "flex flex-row bg-[#EEEEEE] px-5">
-      <div className="bg-[#EEEEEE] px-5">
-        <div className="relative mx-auto w-70 pb-4 rounded-full">
-        <span className="relative flex size-7 ml-auto">
-        <span className="absolute right-0  m-11 h-5 w-5  animate-ping rounded-full bg-green-400 opacity-75 ring-2 ring-green-400 ring-offset-1"></span>
-        <span className="absolute right-0 m-11 h-5 w-5 size-7 rounded-full bg-green-500 ring-2 ring-green-500 ring-offset-1"></span>
-        </span>
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        <h1 className="my-1 text-center text-3xl font-bold leading-8 text-gray-900">User 1</h1>
-        <ul className="mt-3 divide-y rounded bg-gray-100 py-2 px-5 text-gray-600 shadow-sm hover:text-[#8E1616] hover:shadow w-[300px]">
-          <li className="flex items-center py-3 text-sm">
-            <span>Blood Group</span>
-            <span className="ml-auto"><span className="rounded-full bg-green-200 py-1 px-2 text-xs font-medium text-green-700">O+</span></span>
-          </li>
-          <li className="flex items-center py-3 text-sm">
-            <span>Availability Status </span>
-            <span className="ml-auto">Available</span>
-          </li>
-          <li className="flex items-center py-3 text-sm">
-            <span>Phone </span>
-            <span className="ml-auto">8965243189</span>
-          </li>
-          <li className="flex items-center py-3 text-sm">
-            <span>Email </span>
-            <span className="ml-auto">user1@yahoo.in</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    </div>
-
-    
-    <div className="flex flex-col items-center max-w-3xl w-full">
-      
-      <div className="mb-5 w-full">
-      <div className="flex flex-col items-center max-w-3xl w-full">
-    <div className="mb-5 w-full">
-        <div className="flex items-center">
-        <select className="flex-grow rounded-l-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#8E1616] text-black">
-            <option value="" disabled selected>Blood Group</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-        </select>
-        <input type="text" placeholder="Location" className="flex-grow border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#8E1616] text-black" />
-        <button className="rounded-r-md bg-[#D84040] px-4 py-2 text-white font-semibold hover:bg-[#8E1616]">Search</button>
-        </div>
-    </div>
-</div>
-      </div>
-
-      
-      <div className="grid grid-cols-1 rows-6 gap-5 w-full">
-        <div className="rounded-lg border bg-white p-4 shadow-lg">
-        <div className="flex flex-row justify-center w-full"> 
-          <div><h2 className="text-lg font-bold">Donor Name 1</h2>
-          <p className="text-[#8E1616]">Distance: 2.5 km</p>
-          <button className="mt-2 rounded-md bg-[#D84040] px-3 py-1 text-white font-semibold hover:bg-[#8E1616]">Contact</button>
-          </div>
-          <div className="relative ml-auto w-22 rounded-full">
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        </div>
-        </div>
-        <div className="rounded-lg border bg-white p-4 shadow-lg">
-        <div className="flex flex-row justify-center w-full"> 
-          <div className=""><h2 className="text-lg font-bold">Donor Name 2</h2>
-          <p className="text-[#8E1616]">Distance: 2.5 km</p>
-          <button className="mt-2 rounded-md bg-[#D84040] px-3 py-1 text-white font-semibold hover:bg-[#8E1616]">Contact</button>
-          </div>
-          <div className="relative ml-auto w-22 rounded-full">
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        </div>
-        </div>
-        <div className="rounded-lg border bg-white p-4 shadow-lg">
-        <div className="flex flex-row justify-center w-full"> 
-          <div className=""><h2 className="text-lg font-bold">Donor Name 3</h2>
-          <p className="text-[#8E1616]">Distance: 2.5 km</p>
-          <button className="mt-2 rounded-md bg-[#D84040] px-3 py-1 text-white font-semibold hover:bg-[#8E1616]">Contact</button>
-          </div>
-          <div className="relative ml-auto w-22 rounded-full">
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        </div>
-        </div>
-        <div className="rounded-lg border bg-white p-4 shadow-lg">
-        <div className="flex flex-row justify-center w-full"> 
-          <div className=""><h2 className="text-lg font-bold">Donor Name 4</h2>
-          <p className="text-[#8E1616]">Distance: 2.5 km</p>
-          <button className="mt-2 rounded-md bg-[#D84040] px-3 py-1 text-white font-semibold hover:bg-[#8E1616]">Contact</button>
-          </div>
-          <div className="relative ml-auto w-22 rounded-full">
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        </div>
-        </div>
-        <div className="rounded-lg border bg-white p-4 shadow-lg">
-        <div className="flex flex-row justify-center w-full"> 
-          <div className=""><h2 className="text-lg font-bold">Donor Name 5</h2>
-          <p className="text-[#8E1616]">Distance: 2.5 km</p>
-          <button className="mt-2 rounded-md bg-[#D84040] px-3 py-1 text-white font-semibold hover:bg-[#8E1616]">Contact</button>
-          </div>
-          <div className="relative ml-auto w-22 rounded-full">
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        </div>
-        </div>
-        <div className="rounded-lg border bg-white p-4 shadow-lg">
-        <div className="flex flex-row justify-center w-full"> 
-          <div className=""><h2 className="text-lg font-bold">Donor Name 6</h2>
-          <p className="text-[#8E1616]">Distance: 2.5 km</p>
-          <button className="mt-2 rounded-md bg-[#D84040] px-3 py-1 text-white font-semibold hover:bg-[#8E1616]">Contact</button>
-          </div>
-          <div className="relative ml-auto w-22 rounded-full">
-          <img className="mx-auto h-auto w-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
-        </div>
-        </div>
-        </div>
-      </div>
-    </div>
-    <div className="flex flex-col w-full justify-center mx-5 ">
-        <h2 className="text-xl font-bold mb-3">Live Map of Available Donors</h2>
-        <div className="border rounded-lg h-full flex items-center justify-center bg-[#EEEEEE] shadow-lg">
-          <p className="text-gray-500">Map will be displayed here</p>
-          
-        </div>
-      </div>
-  </div>
-</div>
-
-
-    </>
-);
+  const [selectedBloodType, setSelectedBloodType] = useState("");
+  const [searchAddress, setSearchAddress] = useState("");
+  const [donors, setDonors] = useState([]);
+  const findDonors = async () => {
+    const response = await axios.post("http://localhost:8080/find-donor", {
+      address: searchAddress,
+      bloodtype: selectedBloodType,
+    });
+    const foundDonor = response.data.donors;
+    setDonors(foundDonor);
+    console.log(foundDonor);
   };
-  
-  export default Dashboard;
+  return (
+    <>
+      <Navbar></Navbar>
+      <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-1 bg-white rounded-lg shadow p-6">
+            <h2 className="text-lg font-semibold mb-4">Find Blood Donors</h2>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Blood Type
+              </label>
+              <select
+                value={selectedBloodType}
+                onChange={(e) => setSelectedBloodType(e.target.value)}
+                className="w-full border border-gray-300 rounded-lg px-3 py-2"
+              >
+                <option value="">Select Blood Type</option>
+                {bloodGroups.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Location
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchAddress}
+                  onChange={(e) => setSearchAddress(e.target.value)}
+                  placeholder="Enter your location"
+                  className="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2"
+                />
+                <MapPin className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              </div>
+              <button
+                onClick={findDonors}
+                className="bg-red-100 text-red-600 w-full p-2 rounded-md mt-6 cursor-pointer hover:bg-red-200 transition"
+              >
+                Search donors
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-700">
+                Available Donors
+              </h3>
+              {donors.length > 0 ? (
+                donors.map((donor) => (
+                  <div
+                    key={donor._id}
+                    className="border border-gray-200 rounded-lg p-4"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <div className="flex items-center">
+                          <User className="h-5 w-5 text-gray-400" />
+                          <span className="ml-2 font-medium">
+                            {donor.username}
+                          </span>
+                        </div>
+                        <div className="mt-2 flex items-center text-sm text-gray-500">
+                          <Droplets className="h-4 w-4 mr-1" />
+                          <span>{donor.bloodtype}</span>
+                        </div>
+                        <div className="mt-1 flex items-center text-sm text-gray-500">
+                          <MapPin className="h-4 w-4 mr-1" />
+                          <span>
+                            {(donor.distance / 1000).toFixed(2)} km away
+                          </span>
+                        </div>
+                        <div className="mt-1 flex items-center text-sm text-gray-500">
+                          <Clock className="h-4 w-4 mr-1" />
+                          <span>
+                            Last donated on:{" "}
+                            
+                              {donor.lastDonation
+                                ? new Date(
+                                    donor.lastDonation
+                                  ).toLocaleDateString("en-US")
+                                :<span className="italic"> "Not Available"</span>}
+                            </span>
+                          
+                        </div>
+                      </div>
+                      <button className="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm hover:bg-red-200 transition">
+                        Contact
+                      </button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <h1 className="text-center opacity-75 text-red-600">
+                  Sorry, no donor found nearby
+                </h1>
+              )}
+            </div>
+          </div>
+
+          <div className="lg:col-span-2 bg-white rounded-lg shadow">
+            <div className="h-[calc(100vh-12rem)]">
+              {/* <Map
+                donors={donors}
+                center={[-74.006, 40.7128]} 
+              />  */}
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+};
+
+export default Dashboard;
