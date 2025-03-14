@@ -37,21 +37,21 @@ const Navbar = ({ isScrolled }) => {
             <HiMiniBars3BottomLeft className="text-red-200 w-6 h-6" />
           </button>
         </div>
-        <div className="hidden gap-x-6 lg:flex lg:justify-end">
+        <div className="hidden gap-x-6 lg:flex lg:justify-end items-center tracking-wide">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="relative text-lg text-white after:absolute after:left-0 py-0.5 after:bottom-0 after:h-[2px] after:w-0 after:bg-[#FFFFFF] after:transition-all after:duration-300 hover:after:w-full"
+              className="relative  text-white after:absolute after:left-0 px-2 py-1 after:bottom-0 after:h-[2px] after:w-0 after:bg-[#FFFFFF] after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.name}
             </a>
           ))}
           <a
-            href="#"
-            className="relative text-lg px-2 py-0 text-white transition-all duration-300 rounded-lg border-1 border-transparent hover:rounded-lg hover:bg-red-500/40"
+            href="/login"
+            className="relative px-2 py-1 text-white transition-all duration-300 rounded border-1 border-transparent hover:rounded-lg hover:bg-red-500/40"
           >
-            <div className="flex flex-row items-center gap-1">
+            <div className="flex justify-center items-center gap-1">
               Log in
               <img className="h-6 invert" src="/login.png" alt="" />
             </div>
