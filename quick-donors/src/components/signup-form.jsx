@@ -17,6 +17,7 @@ export function SignupForm({ className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [gender, setGender] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [address, setAddress] = useState("");
 
@@ -36,6 +37,7 @@ export function SignupForm({ className, ...props }) {
         email,
         password,
         bloodtype: bloodGroup,
+        gender,
         address,
       });
       console.log("Signup successful:", response.data);
@@ -124,6 +126,24 @@ export function SignupForm({ className, ...props }) {
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
+              <div className="grid gap-2">
+    <Label htmlFor="gender" className="text-white">
+      Gender
+    </Label>
+    <select
+      id="gender"
+      value={gender}
+      onChange={(e) => setGender(e.target.value)}
+      className="w-full bg-gray-800 border-gray-600 text-sm text-white placeholder-gray-400 focus:ring-[#B03052] rounded-md px-3 py-2"
+    >
+      <option value="">Select Gender</option>
+      {["Male", "Female", "Prefer not to specify"].map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  </div>
               <div className="grid gap-2">
                 <Label htmlFor="bloodGroup" className="text-white">
                   Blood Group
