@@ -9,13 +9,17 @@ const navigation = [
   { name: "About", href: "#" },
 ];
 
-const Navbar = ({ isScrolled }) => {
+const Navbar = ({ isScrolled, currentPage }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [currentPage, setMobileMenuOpen] = useState(false);
+
 
   return (
     <header
-      className={`sticky ${isScrolled ? "top-3 rounded-[50px] m-4" : "top-0 rounded-md"} z-50 transition-all duration-300 ${isScrolled ? "bg-[#B22222]/90 backdrop-blur-[8px] shadow-lg" : "backdrop-blur-sm"}`}
+      className={`sticky 
+        ${isScrolled ? "top-3 rounded-[50px] m-4 bg-[#B22222]/90 backdrop-blur-[8px] shadow-lg" : `${currentPage === "dashboard"? "bg-[#B22222]/90":" "} top-0  backdrop-blur-sm`} 
+      z-50 transition-all duration-300`}
     >
       <nav
         aria-label="Global"
