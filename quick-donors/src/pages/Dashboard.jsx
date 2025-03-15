@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { MapPin, Search, Droplets, Clock, User, Loader2 } from "lucide-react";
 import Navbar from "../components/Navigation";
 import axios from "axios";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "../components/map-style.css"
+import "leaflet/dist/leaflet.css";
 
 const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
@@ -14,6 +17,21 @@ const Dashboard = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
+
+  const markers = [
+    {
+      geocode: [48.86, 2.3522],
+      popUp: "Hello, I am pop up 1"
+    },
+    {
+      geocode: [48.85, 2.3522],
+      popUp: "Hello, I am pop up 2"
+    },
+    {
+      geocode: [48.855, 2.34],
+      popUp: "Hello, I am pop up 3"
+    }
+  ];
 
   const findDonors = async () => {
     setLoading(true);
@@ -86,6 +104,7 @@ const Dashboard = () => {
   return (
     <>
       <Navbar isScrolled={isScrolled} currentPage={"dashboard"} />
+      <div className="mt-3 flex flex-row">
       <main className=" border max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1 bg-white rounded-lg shadow p-6">
@@ -195,12 +214,22 @@ const Dashboard = () => {
           {/* Map Section */}
           <div className="lg:col-span-2 bg-white rounded-lg shadow">
             <div className="h-[calc(100vh-12rem)]">
+              <MapContainer center={[48.8566, 2.3522]} zoom={13}>
+              <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+        {markers.map((marker) => (
+          <Marker position={marker.geocode}>
+          </Marker>
+        ))}
+              </MapContainer>
               {/* <Map donors={donors} center={[-74.006, 40.7128]} /> */}
             </div>
           </div>
         </div>
       </main>
-      <div className="mt-8 border max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+      <div className="border max-w-8xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <h1 className="text-xl font-bold mb-6 sm:ml-16">
           Chat in the community
         </h1>
@@ -235,6 +264,7 @@ const Dashboard = () => {
             Send
           </button>
         </div>
+      </div>
       </div>
     </>
   );
